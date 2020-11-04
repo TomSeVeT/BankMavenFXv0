@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="150.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.SeVeT.bankApp.controllers.client.ClientMenuController">
+   <children>
+      <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewAccountInfo" prefHeight="64.0" prefWidth="150.0" text="Informacje o koncie" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="clientButtons" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewSendTransfer" prefHeight="64.0" prefWidth="150.0" text="Wyślij przelew" textAlignment="CENTER" toggleGroup="$clientButtons" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewTransferHistory" prefHeight="64.0" prefWidth="150.0" text="Historia Przelewów" textAlignment="CENTER" toggleGroup="$clientButtons" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewClientInfo" prefHeight="64.0" prefWidth="150.0" text="Moje dane" textAlignment="CENTER" toggleGroup="$clientButtons" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewChangePassword" prefHeight="64.0" prefWidth="150.0" text="Zmień hasło" textAlignment="CENTER" toggleGroup="$clientButtons" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="15.0" />
+         </font>
+      </ToggleButton>
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logout" prefHeight="64.0" prefWidth="150.0" text="Wyloguj" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="21.0" />
+         </font>
+      </Button>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets left="5.0" right="5.0" />
+   </padding>
+</VBox>

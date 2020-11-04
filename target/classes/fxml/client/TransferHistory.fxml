@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="82.39999085664749" text="Data" />
+          <TableColumn prefWidth="116.79998779296875" text="Nazwa odbiorcy" />
+          <TableColumn prefWidth="252.8000030517578" text="Numer konta odbiorcy" />
+          <TableColumn prefWidth="88.79998779296875" text="Kwota" />
+          <TableColumn prefWidth="205.60003662109375" text="Tytuł" />
+        </columns>
+         <BorderPane.margin>
+            <Insets right="2.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+</BorderPane>
