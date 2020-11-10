@@ -36,9 +36,10 @@ public class EditAccountController {
 
     @FXML
     void applyOnAction() {
-        mainAdminController.getClientModel().editChoosen();
+        mainAdminController.getClientModel().update(mainAdminController.getClientModel().getChoosenClient());
     }
-    public void init(){
+
+    public void init() {
         this.nameField.textProperty().bindBidirectional(mainAdminController.getClientModel().getChoosenClient().firstNameProperty());
         this.lastNameField.textProperty().bindBidirectional(mainAdminController.getClientModel().getChoosenClient().lastNameProperty());
         this.loginField.textProperty().bindBidirectional(mainAdminController.getClientModel().getChoosenClient().loginProperty());

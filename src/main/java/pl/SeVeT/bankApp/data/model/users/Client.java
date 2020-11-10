@@ -25,10 +25,10 @@ public class Client implements User {
     @DatabaseField(columnName = "PASSWORD")
     private String password;
 
-    @DatabaseField(columnName = "PESEL",width = 11)
+    @DatabaseField(columnName = "PESEL", width = 11)
     private long pesel;
 
-    @DatabaseField(columnName = "BIRTH_DATE",dataType = DataType.SERIALIZABLE, format = "YYYY-MM-DD")
+    @DatabaseField(columnName = "BIRTH_DATE", dataType = DataType.SERIALIZABLE, format = "YYYY-MM-DD")
     private LocalDate birthDate;
 
     @DatabaseField(columnName = "ADDRESS")
@@ -37,10 +37,11 @@ public class Client implements User {
     @DatabaseField(columnName = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @DatabaseField(columnName = "ACCOUNT",foreign=true)
+    @DatabaseField(columnName = "ACCOUNT_ID", foreign = true, foreignAutoRefresh = true)
     private Account account;
 
-    public Client(){}
+    public Client() {
+    }
 
     public Client(String firstName, String lastName, String login, String password, long pesel, LocalDate birthDate, String address, String phoneNumber) {
         this.firstName = firstName;

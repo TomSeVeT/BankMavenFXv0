@@ -52,9 +52,9 @@ public class NewAccountController {
 
     @FXML
     void createOnAction() {
-        mainAdminController.getClientModel().addClient(nameField.getText(),lastNameField.getText(),loginField.getText(),passwordField.getText(),
-                Long.parseLong(peselField.getText()),datePickerField.getValue(),
-                addressField.getText(),phoneNumberField.getText());
+        mainAdminController.getClientModel().addClient(nameField.getText(), lastNameField.getText(), loginField.getText(), passwordField.getText(),
+                Long.parseLong(peselField.getText()), datePickerField.getValue(),
+                addressField.getText(), phoneNumberField.getText());
 
     }
 

@@ -2,6 +2,7 @@ package pl.SeVeT.bankApp.modelFx.users;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+
 @Deprecated
 public class UserFx {
 

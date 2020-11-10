@@ -14,13 +14,14 @@ import java.sql.SQLException;
 
 public class DataManager {
     private static ConnectionSource connectionSource;
-    public static void initializeDatabase(){
+
+    public static void initializeDatabase() {
         createConnectionSource();
         createTables();
         closeDatabaseConnection();
     }
 
-    private static void createTables(){
+    private static void createTables() {
         try {
             TableUtils.createTableIfNotExists(connectionSource, Client.class);
             TableUtils.createTableIfNotExists(connectionSource, Admin.class);
@@ -35,22 +36,23 @@ public class DataManager {
         try {
             connectionSource = new JdbcConnectionSource("jdbc:sqlite:data.db");
         } catch (SQLException e) {
-            Dialogs.errorDialog(e.getMessage());;
+            Dialogs.errorDialog(e.getMessage());
+            ;
         }
     }
 
-    public static ConnectionSource getConnectionSourece(){
-        if(connectionSource==null)
+    public static ConnectionSource getConnectionSourece() {
+        if (connectionSource == null)
             createConnectionSource();
 
         return connectionSource;
     }
 
-    public static void closeDatabaseConnection(){
-        if(connectionSource!=null)
-            try{
+    public static void closeDatabaseConnection() {
+        if (connectionSource != null)
+            try {
                 connectionSource.close();
-            }catch (IOException e){
+            } catch (IOException e) {
                 Dialogs.errorDialog(e.getMessage());
             }
     }

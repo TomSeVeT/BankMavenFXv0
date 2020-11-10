@@ -62,7 +62,6 @@ public class ManageAccountsController {
     }
 
 
-
     public void init() {
         mainAdminController.getClientModel().init();
         setAccountsTable();
@@ -73,10 +72,10 @@ public class ManageAccountsController {
 
     private void setAccountsTable() {
         this.accountsTable.setItems(mainAdminController.getClientModel().getClientsList());
-        this.nameColumn.setCellValueFactory(x-> x.getValue().firstNameProperty());
-        this.lastNameColumn.setCellValueFactory(x-> x.getValue().lastNameProperty());
-        this.peselColumn.setCellValueFactory(x->x.getValue().peselProperty());
-        this.birthdayColumn.setCellValueFactory(x->x.getValue().birthDateProperty());
+        this.nameColumn.setCellValueFactory(x -> x.getValue().firstNameProperty());
+        this.lastNameColumn.setCellValueFactory(x -> x.getValue().lastNameProperty());
+        this.peselColumn.setCellValueFactory(x -> x.getValue().peselProperty());
+        this.birthdayColumn.setCellValueFactory(x -> x.getValue().birthDateProperty());
     }
 
 }

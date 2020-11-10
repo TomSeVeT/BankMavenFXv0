@@ -8,7 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import pl.SeVeT.bankApp.data.model.BaseModel;
 import pl.SeVeT.bankApp.data.model.operations.MoneyTransfer;
 import pl.SeVeT.bankApp.data.model.users.Client;
-import pl.SeVeT.bankApp.utils.Generator;
+import pl.SeVeT.bankApp.utils.Generate;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -35,7 +35,7 @@ public class Account implements BaseModel {
     @DatabaseField(columnName = "CLIENT", foreign = true, foreignAutoRefresh = true)
     private Client client;
 
-    @ForeignCollectionField(columnName = "TRANSFER_COLLECTION",eager = true )
+    @ForeignCollectionField(columnName = "TRANSFER_COLLECTION", eager = true)
     private ForeignCollection<MoneyTransfer> moneyTransfers;
 
 
@@ -99,7 +99,7 @@ public class Account implements BaseModel {
     }
 
     public Account(Client client) {
-        this.accNumber = Generator.accNumber();
+        this.accNumber = Generate.accNumber();
         this.balance = BigDecimal.valueOf(0);
         this.creationDate = LocalDate.now();
         this.lastLoginDate = LocalDate.now();

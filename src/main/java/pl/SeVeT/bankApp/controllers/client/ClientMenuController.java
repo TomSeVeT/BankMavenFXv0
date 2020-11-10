@@ -6,7 +6,7 @@ import javafx.scene.control.ToggleGroup;
 public class ClientMenuController {
 
     public static final String ACCOUNT_INFO = "/fxml/client/AccountInfo.fxml";
-    public static final String CHANGE_PASSWORD = "/fxml/ChangePassword.fxml";
+    public static final String CHANGE_PASSWORD = "/fxml/client/ChangeClientPassword.fxml";
     public static final String CLIENT_INFO = "/fxml/client/ClientInfo.fxml";
     public static final String SEND_TRANSFER = "/fxml/client/SendTransfer.fxml";
     public static final String TRANSFER_HISTORY = "/fxml/client/TransferHistory.fxml";
@@ -25,30 +25,30 @@ public class ClientMenuController {
 
     @FXML
     void viewAccountInfo() {
-        mainClientController.setView(ACCOUNT_INFO);
+        mainClientController.setAccountInfoControllerView();
     }
 
     @FXML
     void viewChangePassword() {
-        mainClientController.setView(CHANGE_PASSWORD);
+        mainClientController.setChangePasswordControllerView();
 
     }
 
     @FXML
     void viewClientInfo() {
-        mainClientController.setView(CLIENT_INFO);
+        mainClientController.setClientInfoControllerView();
 
     }
 
     @FXML
     void viewSendTransfer() {
-        mainClientController.setView(SEND_TRANSFER);
+        mainClientController.setSendTransferControllerView();
 
     }
 
     @FXML
     void viewTransferHistory() {
-        mainClientController.setView(TRANSFER_HISTORY);
+        mainClientController.setTransferHistoryControllerView();
 
     }
 

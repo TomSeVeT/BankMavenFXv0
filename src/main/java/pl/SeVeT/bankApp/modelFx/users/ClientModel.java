@@ -10,7 +10,9 @@ import pl.SeVeT.bankApp.data.dataUtils.DataManager;
 import pl.SeVeT.bankApp.data.model.accounts.Account;
 import pl.SeVeT.bankApp.data.model.users.Client;
 import pl.SeVeT.bankApp.utils.ConverterFx;
+import pl.SeVeT.bankApp.utils.Generate;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class ClientModel {
         ClientDao clientDao = new ClientDao(DataManager.getConnectionSourece());
         this.clientsList.clear();
         List<Client> tempClientList = clientDao.allQuery(Client.class);
-        tempClientList.forEach(x->{
+        tempClientList.forEach(x -> {
             ClientFx clientFx = ConverterFx.clientToFx(x);
             clientsList.add(clientFx);
         });
@@ -32,14 +34,20 @@ public class ClientModel {
     }
 
     public void addClient(String firstName, String lastName, String login, String password,
-            long pesel, LocalDate birthDate, String address, String phoneNumber) {
+                          long pesel, LocalDate birthDate, String address, String phoneNumber) {
 
         Client client = new Client(
-                firstName,lastName,
-                login,password,
-                pesel,birthDate
-                ,address,phoneNumber);
+                firstName, lastName,
+                login, password,
+                pesel, birthDate
+                , address, phoneNumber);
+
         Account clientAccount = new Account(client);
+
+        while(!accountNumberUnique(clientAccount.getAccNumber())) {
+            clientAccount.setAccNumber(Generate.accNumber());
+        }
+
         client.setAccount(clientAccount);
 
         AccountDao accountDao = new AccountDao(DataManager.getConnectionSourece());
@@ -47,24 +55,30 @@ public class ClientModel {
         ClientDao clientDao = new ClientDao(DataManager.getConnectionSourece());
         clientDao.createOrUpdate(client);
         clientAccount.setClient(client);
-        accountDao.refresh(clientAccount);
+        accountDao.createOrUpdate(clientAccount);
         DataManager.closeDatabaseConnection();
     }
 
-    public void deleteSelectedClient(){
+    private boolean accountNumberUnique(BigInteger accNumber) {
+        for (ClientFx clientFx : clientsList)
+            if(clientFx.getAccount().getAccNumber().equals(accNumber)) return false;
+
+        return true;
+    }
+
+    public void deleteSelectedClient() {
         ClientDao clientDao = new ClientDao(DataManager.getConnectionSourece());
         AccountDao accountDao = new AccountDao(DataManager.getConnectionSourece());
-        accountDao.deleteById(Account.class,selectedClient.getValue().getAccount().getId());
+        accountDao.deleteById(Account.class, selectedClient.getValue().getAccount().getId());
         clientDao.deleteById(Client.class, this.selectedClient.getValue().getId());
         DataManager.closeDatabaseConnection();
     }
 
-    public void editChoosen() {
+    public void update(ClientFx clientFx){
         ClientDao clientDao = new ClientDao(DataManager.getConnectionSourece());
-        clientDao.createOrUpdate(ConverterFx.fxToClient(choosenClient.getValue()));
-
-
+        clientDao.createOrUpdate(ConverterFx.fxToClient(clientFx));
     }
+
 
     public ClientFx getLoggedClient() {
         return loggedClient.get();
@@ -82,7 +96,9 @@ public class ClientModel {
         this.clientsList = clientsList;
     }
 
-    public void setLoggedClient(ClientFx loggedClient) { this.loggedClient.set(loggedClient); }
+    public void setLoggedClient(ClientFx loggedClient) {
+        this.loggedClient.set(loggedClient);
+    }
 
     public ClientFx getSelectedClient() {
         return selectedClient.get();
@@ -107,6 +123,7 @@ public class ClientModel {
     public void setChoosenClient(ClientFx choosenClient) {
         this.choosenClient.set(choosenClient);
     }
+
 
 
 }

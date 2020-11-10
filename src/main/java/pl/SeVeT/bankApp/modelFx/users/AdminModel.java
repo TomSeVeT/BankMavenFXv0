@@ -17,11 +17,11 @@ public class AdminModel {
     private ObjectProperty<AdminFx> selectedAdmin = new SimpleObjectProperty<>();
     private ObjectProperty<AdminFx> chosenAdmin = new SimpleObjectProperty<>();
 
-    public void init(){
+    public void init() {
         AdminDao adminDao = new AdminDao(DataManager.getConnectionSourece());
         this.adminsList.clear();
         List<Admin> tempAdminList = adminDao.allQuery(Admin.class);
-        tempAdminList.forEach(x->{
+        tempAdminList.forEach(x -> {
             AdminFx adminFx = ConverterFx.adminToFx(x);
             adminsList.add(adminFx);
         });
@@ -40,15 +40,15 @@ public class AdminModel {
         DataManager.closeDatabaseConnection();
     }
 
-    public void editChoosen() {
+    public void update(AdminFx adminFx) {
         AdminDao adminDao = new AdminDao(DataManager.getConnectionSourece());
-        adminDao.createOrUpdate(ConverterFx.fxToAdmin(chosenAdmin.getValue()));
+        adminDao.createOrUpdate(ConverterFx.fxToAdmin(adminFx));
         DataManager.closeDatabaseConnection();
     }
 
-        public static void addSeVeT(){
+    public static void addSeVeT() {
         AdminDao adminDao = new AdminDao(DataManager.getConnectionSourece());
-        adminDao.createOrUpdate(new Admin("Tomasz","Sipel","SeVeT","sevet"));
+        adminDao.createOrUpdate(new Admin("Tomasz", "Sipel", "SeVeT", "sevet"));
     }
 
     public AdminFx getLoggedAdmin() {

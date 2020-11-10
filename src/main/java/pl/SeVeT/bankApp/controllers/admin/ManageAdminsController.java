@@ -8,7 +8,7 @@ import pl.SeVeT.bankApp.modelFx.users.AdminFx;
 
 public class ManageAdminsController {
 
-    public static final String NEW_ADMIN= "/fxml/admin/NewAdmin.fxml";
+    public static final String NEW_ADMIN = "/fxml/admin/NewAdmin.fxml";
     public static final String EDIT_ADMIN = "/fxml/admin/EditAdmin.fxml";
 
 
@@ -28,7 +28,7 @@ public class ManageAdminsController {
     private TableColumn<AdminFx, String> lastNameColumn;
 
     @FXML
-    public void init(){
+    public void init() {
         mainAdminController.getAdminModel().init();
         setAdminTable();
         adminTable.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observableValue, oldValue, newValue) -> mainAdminController.getAdminModel()
@@ -37,9 +37,9 @@ public class ManageAdminsController {
 
     private void setAdminTable() {
         this.adminTable.setItems(mainAdminController.getAdminModel().getAdminsList());
-        this.loginColumn.setCellValueFactory(x-> x.getValue().loginProperty());
-        this.nameColumn.setCellValueFactory(x-> x.getValue().nameProperty());
-        this.lastNameColumn.setCellValueFactory(x-> x.getValue().lastNameProperty());
+        this.loginColumn.setCellValueFactory(x -> x.getValue().loginProperty());
+        this.nameColumn.setCellValueFactory(x -> x.getValue().nameProperty());
+        this.lastNameColumn.setCellValueFactory(x -> x.getValue().lastNameProperty());
     }
 
     @FXML

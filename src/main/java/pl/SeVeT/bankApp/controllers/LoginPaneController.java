@@ -1,4 +1,5 @@
 package pl.SeVeT.bankApp.controllers;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,26 +60,27 @@ public class LoginPaneController {
 
     @FXML
     void logInAdminButtonOnAction(ActionEvent event) throws SQLException {
-        //AdminModel.addSeVeT();
-        Admin loggedAdmin = Login.logAsAdmin(loginField.getText(),passwordField.getText());
-        if(loggedAdmin!=null){
-        mainAdminController = (MainAdminController) SceneController.setAdminScene(primaryStage);
-        mainAdminController.getAdminModel().setLoggedAdmin(ConverterFx.adminToFx(loggedAdmin));}
-        else Dialogs.loginError();
+         //AdminModel.addSeVeT();
+        Admin loggedAdmin = Login.logAsAdmin(loginField.getText(), passwordField.getText());
+        if (loggedAdmin != null) {
+            mainAdminController = (MainAdminController) SceneController.setAdminScene(primaryStage);
+            mainAdminController.getAdminModel().setLoggedAdmin(ConverterFx.adminToFx(loggedAdmin));
+        } else Dialogs.loginError();
     }
 
     @FXML
     void logInButtonOnAction(ActionEvent event) throws SQLException {
-        Client loggedClient = Login.logAsClient(loginField.getText(),passwordField.getText());
-        if(loggedClient!=null){
+        Client loggedClient = Login.logAsClient(loginField.getText(), passwordField.getText());
+        if (loggedClient != null) {
             mainClientController = (MainClientController) SceneController.setClientScene(primaryStage);
             mainClientController.getClientModel().setLoggedClient(ConverterFx.clientToFx(loggedClient));
-            mainClientController.getAccountModel().setActiveAccount(ConverterFx.accountToFx(loggedClient.getAccount()));}
-        else Dialogs.loginError();
+            mainClientController.getAccountModel().setActiveAccount(ConverterFx.accountToFx(loggedClient.getAccount()));
+            mainClientController.getMoneyTransferModel().setTransferList(ConverterFx.transferListToFx(loggedClient.getAccount().getMoneyTransfers()));
+        } else Dialogs.loginError();
     }
 
     public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage=primaryStage;
+        this.primaryStage = primaryStage;
 
     }
 }

@@ -17,6 +17,11 @@ public class ClientFx {
     private StringProperty phoneNumber = new SimpleStringProperty();
     private ObjectProperty<AccountFx> account = new SimpleObjectProperty<>();
 
+    @Override
+    public String toString(){
+        return this.getFirstName() + " " + this.getLastName();
+    }
+
     public int getId() {
         return id.get();
     }

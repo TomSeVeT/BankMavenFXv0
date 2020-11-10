@@ -7,8 +7,10 @@ import pl.SeVeT.bankApp.utils.Dialogs;
 public class AdminMenuController {
     public static final String MANAGE_ACCOUNTS = "/fxml/admin/ManageAccounts.fxml";
     public static final String MANAGE_ADMINS = "/fxml/admin/ManageAdmins.fxml";
-    public static final String CHANGE_PASSWORD = "/fxml/ChangePassword.fxml";
+    public static final String CHANGE_PASSWORD = "/fxml/admin/ChangeAdminPassword.fxml";
 
+    @FXML
+    private ToggleGroup adminButtons;
 
     @FXML
     private MainAdminController mainAdminController;
@@ -26,9 +28,6 @@ public class AdminMenuController {
 
 
     @FXML
-    private ToggleGroup adminButtons;
-
-    @FXML
     public void viewManageAccounts() {
         mainAdminController.setManageAccountsControllerView();
     }
@@ -40,7 +39,7 @@ public class AdminMenuController {
 
     @FXML
     public void viewChangePassword() {
-        mainAdminController.setView(CHANGE_PASSWORD);
+        mainAdminController.setChangeAdminPasswordControllerView();
     }
 
     @FXML

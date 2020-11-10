@@ -28,10 +28,10 @@ public class NewAdminController {
 
     @FXML
     void clearOnAction() {
-            nameField.setText("");
-            lastNameField.setText("");
-            loginField.setText("");
-            passwordField.setText("");
+        nameField.setText("");
+        lastNameField.setText("");
+        loginField.setText("");
+        passwordField.setText("");
     }
 
 

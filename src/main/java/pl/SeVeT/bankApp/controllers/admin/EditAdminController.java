@@ -22,10 +22,10 @@ public class EditAdminController {
 
     @FXML
     void applyOnAction() {
-        mainAdminController.getAdminModel().editChoosen();
+        mainAdminController.getAdminModel().update(mainAdminController.getAdminModel().getChosenAdmin());
     }
 
-    public void init(){
+    public void init() {
         this.nameField.textProperty().bindBidirectional(mainAdminController.getAdminModel().getChosenAdmin().nameProperty());
         this.lastNameField.textProperty().bindBidirectional(mainAdminController.getAdminModel().getChosenAdmin().lastNameProperty());
         this.loginField.textProperty().bindBidirectional(mainAdminController.getAdminModel().getChosenAdmin().loginProperty());

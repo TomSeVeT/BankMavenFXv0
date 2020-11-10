@@ -20,7 +20,10 @@ public class Login {
         client = clientDao.getDao(Client.class).queryForFirst(queryBuilder.where()
                 .eq("LOGIN", login).prepare());
         if (client != null)
-            if (client.getPassword().equals(password)) return client;
+            if (client.getPassword().equals(password)) {
+                //TODO SetLastLogin
+                return client;
+            }
         return null;
     }
 
