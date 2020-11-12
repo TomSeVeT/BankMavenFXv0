@@ -12,6 +12,8 @@ public class ManageAccountsController {
 
     public static final String NEW_ACCOUNT = "/fxml/admin/NewAccount.fxml";
     public static final String EDIT_ACCOUNT = "/fxml/admin/EditAccount.fxml";
+    public static final String DEPOSIT_WITHDRAW = "/fxml/admin/DepositWithdraw.fxml";
+
 
 
     @FXML
@@ -49,6 +51,10 @@ public class ManageAccountsController {
     }
 
     @FXML
+    void depositWithdrawOnAction() { mainAdminController.setDepositWithdrawControllerView();    }
+
+
+    @FXML
     void searchFieldKeyReleased() {
 
     }
@@ -77,5 +83,6 @@ public class ManageAccountsController {
         this.peselColumn.setCellValueFactory(x -> x.getValue().peselProperty());
         this.birthdayColumn.setCellValueFactory(x -> x.getValue().birthDateProperty());
     }
+
 
 }

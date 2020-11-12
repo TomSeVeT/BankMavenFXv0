@@ -2,6 +2,8 @@ package pl.SeVeT.bankApp.controllers.admin;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import pl.SeVeT.bankApp.modelFx.accounts.AccountModel;
 import pl.SeVeT.bankApp.modelFx.users.AdminModel;
 import pl.SeVeT.bankApp.modelFx.users.ClientModel;
 import pl.SeVeT.bankApp.utils.Fxml;
@@ -33,10 +35,18 @@ public class MainAdminController {
     private ChangeAdminPasswordController changeAdminPasswordController;
 
     @FXML
+    private DepositWithdrawController depositWithdrawController;
+
+
+    @FXML
     private BorderPane adminBorderPane;
+
+    private Stage primaryStage;
 
     private AdminModel adminModel;
     private ClientModel clientModel;
+    private AccountModel accountModel;
+
 
     @FXML
     public void initialize() {
@@ -44,6 +54,7 @@ public class MainAdminController {
 
         clientModel = new ClientModel();
         adminModel = new AdminModel();
+        accountModel = new AccountModel();
     }
 
     public void setManageAccountsControllerView() {
@@ -102,6 +113,16 @@ public class MainAdminController {
         changeAdminPasswordController.setMainAdminController(this);
     }
 
+
+    public void setDepositWithdrawControllerView() {
+        Object[] temp = Fxml.loadFXML_getController(ManageAccountsController.DEPOSIT_WITHDRAW);
+        adminBorderPane.setCenter((BorderPane) temp[0]);
+        depositWithdrawController = (DepositWithdrawController) temp[1];
+        depositWithdrawController.setMainAdminController(this);
+        depositWithdrawController.init();
+    }
+
+
     public void setView(String fxmlPatch) {
         adminBorderPane.setCenter(Fxml.loadFXML(fxmlPatch));
     }
@@ -115,5 +136,15 @@ public class MainAdminController {
         return adminModel;
     }
 
+    public AccountModel getAccountModel() {
+        return accountModel;
+    }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 }

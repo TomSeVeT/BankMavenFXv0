@@ -21,7 +21,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //TODO:cut to util.Fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_PANE_FXML));
         Pane mainPane = loader.load();
         Scene scene = new Scene(mainPane);

@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
-            prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.SeVeT.bankApp.controllers.admin.ManageAccountsController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.SeVeT.bankApp.controllers.admin.ManageAccountsController">
     <right>
-        <VBox alignment="CENTER" prefHeight="500.0" prefWidth="122.0" spacing="50.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="500.0" prefWidth="122.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onAction="#editAccount" prefHeight="100.0" text="Zmień Dane" textAlignment="CENTER"
-                        wrapText="true">
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#depositWithdrawOnAction" prefHeight="90.0" text="Depozyt / Wypłata" textAlignment="CENTER" textFill="#aba935" wrapText="true">
+               <font>
+                  <Font name="Arial Black" size="17.0" />
+               </font>
+            </Button>
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editAccount" prefHeight="90.0" text="Zmień Dane" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Black" size="17.0" />
+               </font>
+            </Button>
+                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#newAccount" prefHeight="90.0" text="Nowe Konto" textAlignment="CENTER" textFill="#129223" wrapText="true">
                     <font>
-                        <Font name="Arial Black" size="17.0"/>
+                        <Font name="Arial Black" size="17.0" />
                     </font>
                 </Button>
-                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onAction="#deleteAccount" prefHeight="100.0" text="Usuń konto" textAlignment="CENTER"
-                        textFill="#e80606" wrapText="true">
+                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="90.0" text="Usuń konto" textAlignment="CENTER" textFill="#e80606" wrapText="true">
                     <font>
-                        <Font name="Arial Black" size="17.0"/>
-                    </font>
-                </Button>
-                <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onAction="#newAccount" prefHeight="100.0" text="Nowe Konto" textAlignment="CENTER"
-                        textFill="#129223" wrapText="true">
-                    <font>
-                        <Font name="Arial Black" size="17.0"/>
+                        <Font name="Arial Black" size="17.0" />
                     </font>
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets left="15.0" right="15.0"/>
+                <Insets left="15.0" right="15.0" />
             </BorderPane.margin>
         </VBox>
     </right>
     <center>
         <TableView fx:id="accountsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="104.00002747774124" text="Imię"/>
-                <TableColumn fx:id="lastNameColumn" prefWidth="197.6000213623047" text="Nazwisko"/>
-                <TableColumn fx:id="peselColumn" minWidth="0.0" prefWidth="147.20001220703125" text="Pesel"/>
-                <TableColumn fx:id="birthdayColumn" prefWidth="151.20001220703125" text="Data Urodzenia"/>
+                <TableColumn fx:id="nameColumn" prefWidth="104.00002747774124" text="Imię" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="197.6000213623047" text="Nazwisko" />
+                <TableColumn fx:id="peselColumn" minWidth="0.0" prefWidth="147.20001220703125" text="Pesel" />
+                <TableColumn fx:id="birthdayColumn" prefWidth="151.20001220703125" text="Data Urodzenia" />
             </columns>
         </TableView>
     </center>
@@ -52,23 +57,23 @@
             <children>
                 <Label text="Wyszukaj">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Label>
                 <TextField onKeyReleased="#searchFieldKeyReleased">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </TextField>
                 <Label text="Według ">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Label>
-                <ChoiceBox prefWidth="150.0"/>
+                <ChoiceBox prefWidth="150.0" />
             </children>
             <BorderPane.margin>
-                <Insets left="30.0"/>
+                <Insets left="30.0" />
             </BorderPane.margin>
         </HBox>
     </top>

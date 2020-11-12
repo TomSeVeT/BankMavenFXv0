@@ -1,7 +1,5 @@
 package pl.SeVeT.bankApp.modelFx.operations;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pl.SeVeT.bankApp.data.dao.AccountDao;
@@ -14,15 +12,30 @@ import pl.SeVeT.bankApp.utils.ConverterFx;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MoneyTransferModel {
     private ObservableList<MoneyTransferFx> transferList = FXCollections.observableArrayList();
 
-    public void init() {
+    public void init(BigInteger accNumber) {
         MoneyTransferDao moneyTransferDao = new MoneyTransferDao(DataManager.getConnectionSourece());
         this.transferList.clear();
+        List<MoneyTransfer> tempTransferList;
+        tempTransferList = moneyTransferDao.allQuery(MoneyTransfer.class);
+        for (MoneyTransfer moneyTransfer : tempTransferList) {
+            if(moneyTransfer.getSenderNumber().equals(accNumber)){
+                moneyTransfer.setAmount(moneyTransfer.getAmount().multiply(new BigDecimal("-1")));
+                transferList.add(ConverterFx.moneyTransferToFx(moneyTransfer));
+            }else if (moneyTransfer.getReciverNumber().equals(accNumber))
+                transferList.add(ConverterFx.moneyTransferToFx(moneyTransfer));
+        }
         DataManager.closeDatabaseConnection();
+    }
+
+    public static boolean accountNumberExists(BigInteger accNumber){
+        AccountDao accountDao = new AccountDao(DataManager.getConnectionSourece());
+        return accountDao.queryByAccNumber(accNumber) != null;
     }
 
     public void sendTransfer(BigDecimal amount, String reciverName, String reciverNumber,
@@ -36,10 +49,8 @@ public class MoneyTransferModel {
         accountDao.refresh(tempMoneyTransfer.getAccount());
         moneyTransferDao.createOrUpdate(tempMoneyTransfer);
         accountFx.setBalance(accountFx.getBalance().subtract(amount));
-        accountFx.getMoneyTransfers().add(ConverterFx.moneyTransferToFx(tempMoneyTransfer));
         accountDao.createOrUpdate(ConverterFx.fxToAccount(accountFx));
         reciverAccount.setBalance(reciverAccount.getBalance().add(amount));
-        reciverAccount.getMoneyTransfers().add(tempMoneyTransfer);
         accountDao.createOrUpdate(reciverAccount);
         DataManager.closeDatabaseConnection();
     }

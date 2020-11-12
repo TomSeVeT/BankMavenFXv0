@@ -1,7 +1,12 @@
 package pl.SeVeT.bankApp.controllers.client;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleGroup;
+import pl.SeVeT.bankApp.utils.Dialogs;
+import pl.SeVeT.bankApp.utils.SceneController;
+
+import java.util.Optional;
 
 public class ClientMenuController {
 
@@ -54,6 +59,10 @@ public class ClientMenuController {
 
     @FXML
     void logout() {
+        Optional<ButtonType> result = Dialogs.logoutDialog();
+        if(result.get()==ButtonType.OK) {
+            SceneController.setLoginScene(mainClientController.getPrimaryStage());
+        }
 
     }
 }

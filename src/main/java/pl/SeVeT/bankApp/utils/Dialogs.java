@@ -34,12 +34,6 @@ public class Dialogs {
         return logoutAlert.showAndWait();
     }
 
-    public static Optional<ButtonType> saveDialog() {
-        Alert saveAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        saveAlert.setTitle("Zapisywanie");
-        saveAlert.setHeaderText("Czy chcesz zapisać zmiany?");
-        return saveAlert.showAndWait();
-    }
 
     public static void errorDialog(String message) {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -87,5 +81,26 @@ public class Dialogs {
         accountNotFoundAlert.setHeaderText("Odbiorca o podanym numerze konta nie istnieje.");
         accountNotFoundAlert.showAndWait();
 
+    }
+
+    public static void balanceTooLow() {
+        Alert balanceTooLowAlert = new Alert(Alert.AlertType.ERROR);
+        balanceTooLowAlert.setTitle("Przelew nie został zlecony!");
+        balanceTooLowAlert.setHeaderText("Nie posiadasz wystarczających środków na koncie");
+        balanceTooLowAlert.showAndWait();
+    }
+
+    public static void transferSended(){
+        Alert transferSendedAlert = new Alert(Alert.AlertType.INFORMATION);
+        transferSendedAlert.setTitle("Przelew wykonany!");
+        transferSendedAlert.setHeaderText("Przelew został zrealizowany pomyślnie!");
+        transferSendedAlert.showAndWait();
+    }
+
+    public static void wrongReciverNumber() {
+        Alert balanceTooLowAlert = new Alert(Alert.AlertType.ERROR);
+        balanceTooLowAlert.setTitle("Przelew nie został zlecony!");
+        balanceTooLowAlert.setHeaderText("Brak odbiorcy o podanym numerze konta!");
+        balanceTooLowAlert.showAndWait();
     }
 }

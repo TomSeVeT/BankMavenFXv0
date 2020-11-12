@@ -1,8 +1,13 @@
 package pl.SeVeT.bankApp.controllers.admin;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleGroup;
 import pl.SeVeT.bankApp.utils.Dialogs;
+import pl.SeVeT.bankApp.utils.SceneController;
+
+import java.util.Optional;
 
 public class AdminMenuController {
     public static final String MANAGE_ACCOUNTS = "/fxml/admin/ManageAccounts.fxml";
@@ -44,8 +49,10 @@ public class AdminMenuController {
 
     @FXML
     public void logout() {
-        Dialogs.logoutDialog();
-
+        Optional<ButtonType> result = Dialogs.logoutDialog();
+        if(result.get()==ButtonType.OK) {
+            SceneController.setLoginScene(mainAdminController.getPrimaryStage(),mainAdminController.getPrimaryStage());
+        }
     }
 
 }

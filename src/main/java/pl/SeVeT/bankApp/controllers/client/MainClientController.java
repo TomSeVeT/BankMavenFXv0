@@ -2,6 +2,7 @@ package pl.SeVeT.bankApp.controllers.client;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import pl.SeVeT.bankApp.controllers.admin.EditAccountController;
 import pl.SeVeT.bankApp.controllers.admin.ManageAccountsController;
 import pl.SeVeT.bankApp.modelFx.accounts.AccountModel;
@@ -32,6 +33,8 @@ public class MainClientController {
     @FXML
     private BorderPane clientBorderPane;
 
+    private Stage primaryStage;
+
     private ClientModel clientModel;
 
     private AccountModel accountModel;
@@ -44,22 +47,6 @@ public class MainClientController {
         clientModel = new ClientModel();
         accountModel = new AccountModel();
         moneyTransferModel = new MoneyTransferModel();
-    }
-
-    public void setView(String fxmlPatch) {
-        clientBorderPane.setCenter(Fxml.loadFXML(fxmlPatch));
-    }
-
-    public ClientModel getClientModel() {
-        return clientModel;
-    }
-
-    public AccountModel getAccountModel() {
-        return accountModel;
-    }
-
-    public MoneyTransferModel getMoneyTransferModel() {
-        return moneyTransferModel;
     }
 
     public void setAccountInfoControllerView() {
@@ -99,6 +86,27 @@ public class MainClientController {
         transferHistoryController = (TransferHistoryController) temp[1];
         transferHistoryController.setMainClientController(this);
         transferHistoryController.init();
+    }
 
+
+
+    public ClientModel getClientModel() {
+        return clientModel;
+    }
+
+    public AccountModel getAccountModel() {
+        return accountModel;
+    }
+
+    public MoneyTransferModel getMoneyTransferModel() {
+        return moneyTransferModel;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

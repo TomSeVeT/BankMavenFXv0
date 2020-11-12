@@ -60,11 +60,12 @@ public class LoginPaneController {
 
     @FXML
     void logInAdminButtonOnAction(ActionEvent event) throws SQLException {
-         //AdminModel.addSeVeT();
+        //AdminModel.addSeVeT();
         Admin loggedAdmin = Login.logAsAdmin(loginField.getText(), passwordField.getText());
         if (loggedAdmin != null) {
             mainAdminController = (MainAdminController) SceneController.setAdminScene(primaryStage);
             mainAdminController.getAdminModel().setLoggedAdmin(ConverterFx.adminToFx(loggedAdmin));
+            mainAdminController.setPrimaryStage(primaryStage);
         } else Dialogs.loginError();
     }
 
@@ -75,7 +76,8 @@ public class LoginPaneController {
             mainClientController = (MainClientController) SceneController.setClientScene(primaryStage);
             mainClientController.getClientModel().setLoggedClient(ConverterFx.clientToFx(loggedClient));
             mainClientController.getAccountModel().setActiveAccount(ConverterFx.accountToFx(loggedClient.getAccount()));
-            mainClientController.getMoneyTransferModel().setTransferList(ConverterFx.transferListToFx(loggedClient.getAccount().getMoneyTransfers()));
+            mainClientController.getMoneyTransferModel().init(loggedClient.getAccount().getAccNumber());
+            mainClientController.setPrimaryStage(primaryStage);
         } else Dialogs.loginError();
     }
 
