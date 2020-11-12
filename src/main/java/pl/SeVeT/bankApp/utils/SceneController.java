@@ -35,6 +35,8 @@ public class SceneController {
     public static Object setLoginScene(Stage primaryStage){
         Object[] temp = Fxml.loadFXML_getController(LOGIN_PANE_FXML);
         Scene scene = new Scene((Pane) temp[0]);
+        LoginPaneController loginPaneController = (LoginPaneController)temp[1];
+        loginPaneController.setPrimaryStage(primaryStage);
         primaryStage.hide();
         primaryStage.setScene(scene);
         primaryStage.setTitle("BankApp Login");
