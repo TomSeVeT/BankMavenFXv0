@@ -51,7 +51,7 @@ public class AdminMenuController {
     public void logout() {
         Optional<ButtonType> result = Dialogs.logoutDialog();
         if(result.get()==ButtonType.OK) {
-            SceneController.setLoginScene(mainAdminController.getPrimaryStage(),mainAdminController.getPrimaryStage());
+            SceneController.setLoginScene(mainAdminController.getPrimaryStage());
         }
     }
 
